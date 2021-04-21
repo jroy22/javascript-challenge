@@ -8,10 +8,10 @@ var tbody = d3.select("tbody");
 console.log(tableData);
 
 //Use d3 to update each cell's text with per sighting info (date, city, state, country, shape, duration, comment)
-  data.forEach(function(weatherReport) {
-    console.log(weatherReport);
+  data.forEach(function(ufoSightings) {
+    console.log(ufoSightings);
     var row = tbody.append("tr");
-    Object.entries(weatherReport).forEach(function([key, value]) {
+    Object.entries(ufoSightings).forEach(function([key, value]) {
       console.log(key, value);
       // Append a cell to the row for each value
       // in the weather report object
