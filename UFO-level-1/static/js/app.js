@@ -5,18 +5,17 @@ var tableData = data;
 var tbody = d3.select("tbody");
 
 //Read data
-console.log(tableData);
+// console.log(tableData);
 
 //Use d3 to update each cell's text with per sighting info (date, city, state, country, shape, duration, comment)
   data.forEach(function(ufoSightings) {
-    console.log(ufoSightings);
+    // console.log(ufoSightings);
     var row = tbody.append("tr");
     Object.entries(ufoSightings).forEach(function([key, value]) {
-      console.log(key, value);
-      // Append a cell to the row for each value
-      // in the weather report object
-      var cell = row.append("td");
-      cell.text(value);
+    // console.log(key, value);
+    // Append a cell to the row for each value
+    var cell = row.append("td");
+    cell.text(value);
     });
   });
 
@@ -27,13 +26,17 @@ var button = d3.select("#filter-btn");
 var inputField = d3.select("#datetime");
 
 // This function is triggered when the button is clicked
-function handleClick() {
+function filterButton() {
     console.log("A button was clicked!");
-  
     // Use d3 to see the object that dispatched the event
     console.log(d3.event.target);
   }
-  
-  // Use the `on` function in d3 to attach an event to the handler function
-  button.on("click", handleClick);
 
+// Use the `on` function in d3 to attach an event to the handler function
+button.on("click", filterButton);
+
+// Input fields can trigger a change event when new text is entered.
+inputField.on("change", function() {
+    var newDate = d3.event.target.value;
+    console.log(newDate);
+  });
