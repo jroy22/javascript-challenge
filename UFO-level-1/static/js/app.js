@@ -1,4 +1,4 @@
-// from data.js
+// Getting data from data.js
 var tableData = data;
 
 // Get a reference to the table body
@@ -7,6 +7,7 @@ var tbody = d3.select("tbody");
 //Read data
 // console.log(tableData);
 
+//Putting a table with the UFO Sightings once the page loads
     tableData.forEach(
     function(ufoSightings) {
         // console.log(ufoSightings);
@@ -28,12 +29,6 @@ var inputField = d3.select("#datetime");
 
 //Select the form
 var form = d3.select("#form");
-
-// Use the `on` function in d3 to attach an event to the handler function
-
-button.on("click", toFilter);
-form.on("submit", toFilter);
-
 
 //Function to filter the data
 function toFilter() {
@@ -61,13 +56,23 @@ function toFilter() {
             var row = tbody.append("tr");
             Object.entries(filteredData).forEach(
                 function([key, value]) {
+                
                 //console.log(key, value);
+
                 // Append a cell to the row for each value
                     var cell = row.append("td");
                      cell.text(value);
                 });
          });
 }
+
+// Event handlers
+
+//Calling the toFilter when the filter button is clicked or the enter key is pressed
+button.on("click", toFilter);
+form.on("submit", toFilter);
+
+// Reset Button
 
 // Getting a reference to the button on the page with the id property set to `reset-btn`
 var reset = d3.select("#reset-btn");
@@ -78,4 +83,5 @@ function toReset(){
     tbody.html("");
 }
 
+//Calling the toReset function once the Reset button is clicked
 reset.on("click", toReset);
