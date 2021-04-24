@@ -12,7 +12,7 @@ var tbody = d3.select("tbody");
     // console.log(ufoSightings);
     var row = tbody.append("tr");
     Object.entries(ufoSightings).forEach(function([key, value]) {
-    // console.log(key, value);
+     console.log(key, value);
     // Append a cell to the row for each value
     var cell = row.append("td");
     cell.text(value);
@@ -24,6 +24,8 @@ var button = d3.select("#filter-btn");
 
 // Getting a reference to the input element on the page with the id property set to 'datetime'
 var inputField = d3.select("#datetime");
+
+var form = d3.select("#form");
 
 // This function is triggered when the button is clicked
 function filterButton() {
@@ -40,3 +42,16 @@ inputField.on("change", function() {
     var newDate = d3.event.target.value;
     console.log(newDate);
   });
+
+  function clickEnter() {
+    // Prevent page form refreshing
+    d3.event.preventDefault();
+
+    var searchDate = inputField.property("value");
+
+    var filteredData = tableData.filter(tableData => tableData.datetime === searchDate);
+
+    console.log(filteredData);
+  }
+
+  button.on("click", clickEnter);
