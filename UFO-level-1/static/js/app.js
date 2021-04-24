@@ -7,6 +7,19 @@ var tbody = d3.select("tbody");
 //Read data
 // console.log(tableData);
 
+    tableData.forEach(
+    function(ufoSightings) {
+        // console.log(ufoSightings);
+        var row = tbody.append("tr");
+        Object.entries(ufoSightings).forEach(
+            function([key, value]) {
+            //console.log(key, value);
+            // Append a cell to the row for each value
+                var cell = row.append("td");
+                cell.text(value);
+            });
+    });
+
 // Getting a reference to the button on the page with the id property set to `filter-btn`
 var button = d3.select("#filter-btn");
 
